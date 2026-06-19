@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>欧博体育 · 轻松识别 · 一站触达</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, Roboto, 'Helvetica Neue', sans-serif;
+            background: linear-gradient(145deg, #fcedd9 0%, #f5d6b3 40%, #e8b787 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 2rem 1rem;
+            line-height: 1.6;
+            color: #3b2a1c;
+        }
+
+        .page-wrapper {
+            max-width: 1000px;
+            width: 100%;
+        }
+
+        /* hero block — 杂志通栏横幅 */
+        .hero {
+            background: #fff8f0;
+            border-radius: 36px 36px 18px 18px;
+            padding: 2.8rem 2.5rem 2.2rem;
+            margin-bottom: 2.5rem;
+            box-shadow: 0 12px 28px rgba(120, 70, 30, 0.12), 0 4px 12px rgba(0,0,0,0.03);
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(255, 215, 175, 0.4);
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -40%;
+            right: -10%;
+            width: 320px;
+            height: 320px;
+            background: radial-gradient(circle, #fbdbc1 0%, transparent 70%);
+            border-radius: 50%;
+            opacity: 0.5;
+            pointer-events: none;
+        }
+
+        .hero h1 {
+            font-size: 2.4rem;
+            font-weight: 500;
+            letter-spacing: -0.02em;
+            color: #4f321e;
+            line-height: 1.2;
+            margin-bottom: 0.6rem;
+            position: relative;
+        }
+
+        .hero h1 span {
+            background: linear-gradient(135deg, #c97b3a, #a55a2c);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero p {
+            font-size: 1.15rem;
+            color: #5e4533;
+            max-width: 700px;
+            margin-top: 0.5rem;
+            position: relative;
+        }
+
+        .hero .meta-tag {
+            display: inline-block;
+            background: #eacfb3;
+            color: #4d341f;
+            font-size: 0.85rem;
+            padding: 0.25rem 1rem;
+            border-radius: 40px;
+            margin-top: 1.2rem;
+            letter-spacing: 0.4px;
+            font-weight: 500;
+            backdrop-filter: blur(2px);
+        }
+
+        /* 背景说明卡片 — 杂志式摘要 */
+        .context-card {
+            background: #ffffffde;
+            backdrop-filter: blur(3px);
+            border-radius: 28px;
+            padding: 1.8rem 2.2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 6px 16px rgba(90, 55, 25, 0.08);
+            border: 1px solid #ffe6d1;
+        }
+
+        .context-card h2 {
+            font-size: 1.4rem;
+            font-weight: 450;
+            color: #5b3f2b;
+            margin-bottom: 0.75rem;
+            border-left: 4px solid #c28250;
+            padding-left: 1rem;
+        }
+
+        .context-card p {
+            color: #4b3727;
+        }
+
+        .context-card strong {
+            color: #8a5f3a;
+            font-weight: 500;
+        }
+
+        /* 三段式自然介绍 — 卡片网格 */
+        .features-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.8rem;
+            margin: 2.2rem 0 2rem;
+        }
+
+        .feature-card {
+            flex: 1 1 240px;
+            background: white;
+            border-radius: 26px;
+            padding: 1.8rem 1.6rem 1.6rem;
+            box-shadow: 0 8px 18px rgba(110, 65, 30, 0.06);
+            transition: transform 0.2s ease, box-shadow 0.2s;
+            border: 1px solid #f7e3d3;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 14px 24px rgba(100, 60, 25, 0.1);
+        }
+
+        .feature-card h3 {
+            font-size: 1.3rem;
+            font-weight: 480;
+            color: #6c462b;
+            margin-bottom: 0.6rem;
+        }
+
+        .feature-card p {
+            color: #4d3b2b;
+            font-size: 0.95rem;
+        }
+
+        .feature-card .icon-placeholder {
+            display: inline-block;
+            font-size: 1.7rem;
+            line-height: 1;
+            margin-bottom: 0.5rem;
+            opacity: 0.7;
+            color: #b77b4b;
+        }
+
+        /* 提示条 — 底部访问 */
+        .visit-note {
+            background: #f9efe5;
+            border-radius: 40px;
+            padding: 1.2rem 2rem;
+            margin: 1.2rem 0 2.8rem;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            border: 1px solid #efd5be;
+            box-shadow: 0 2px 8px rgba(80, 45, 20, 0.04);
+        }
+
+        .visit-note p {
+            font-size: 1rem;
+            color: #4f3621;
+            margin: 0.2rem 0;
+        }
+
+        .visit-note .link-sentence {
+            background: #d9b494;
+            color: #2d1d10;
+            padding: 0.15rem 1.4rem;
+            border-radius: 60px;
+            display: inline-block;
+            font-weight: 450;
+            transition: all 0.2s;
+            border: 1px solid transparent;
+        }
+
+        .visit-note .link-sentence:hover {
+            background: #cfa27b;
+            border-color: #b27d56;
+        }
+
+        a {
+            color: #7f5533;
+            text-decoration: none;
+            font-weight: 500;
+            border-bottom: 1px dotted #cfa27b;
+            transition: border-bottom 0.2s, color 0.1s;
+        }
+
+        a:hover {
+            color: #a66132;
+            border-bottom: 1px solid #a66132;
+        }
+
+        .hero a {
+            border-bottom-color: #dbb594;
+        }
+
+        /* FAQ 摘要风格 — 轻量 */
+        .faq-mini {
+            background: #fffbf7;
+            border-radius: 28px;
+            padding: 1.6rem 2rem;
+            margin-top: 1.5rem;
+            border: 1px solid #ecd7c5;
+        }
+
+        .faq-mini h4 {
+            font-weight: 450;
+            font-size: 1.1rem;
+            color: #553a22;
+            margin-bottom: 0.5rem;
+        }
+
+        .faq-mini p {
+            color: #4f3826;
+            font-size: 0.95rem;
+        }
+
+        .faq-mini p + p {
+            margin-top: 0.4rem;
+        }
+
+        .faq-mini .small-q {
+            font-weight: 500;
+            color: #67452b;
+        }
+
+        hr {
+            border: none;
+            border-top: 1px solid #e4cdb9;
+            margin: 1.8rem 0 0.6rem;
+        }
+
+        .footer-meta {
+            text-align: center;
+            color: #6d533d;
+            font-size: 0.85rem;
+            padding: 1.2rem 0 0.4rem;
+            opacity: 0.7;
+        }
+
+        @media (max-width: 640px) {
+            body { padding: 1.2rem 0.8rem; }
+            .hero { padding: 1.8rem 1.5rem; }
+            .hero h1 { font-size: 1.9rem; }
+            .context-card { padding: 1.4rem; }
+            .features-grid { gap: 1rem; }
+            .feature-card { flex: 1 1 100%; }
+            .visit-note { flex-direction: column; align-items: flex-start; gap: 0.7rem; }
+        }
+    </style>
+</head>
+<body>
+<div class="page-wrapper">
+    <!-- HERO 横幅 杂志大标题 -->
+    <div class="hero">
+        <h1>一眼看懂 · <span>欧博体育</span></h1>
+        <p>网站是干什么用的？用户来这里通常想快速定位——<br>一个聚合体育资讯、赛事动态与兴趣社群的内容平台。</p>
+        <div class="meta-tag">⚡ 杂志专题 · 轻快识别</div>
+    </div>
+
+    <!-- 背景说明：为什么需要快速识别 -->
+    <div class="context-card">
+        <h2>先弄明白「这是什么」</h2>
+        <p>打开一个新网站，前三秒决定去留。<strong>欧博体育</strong> 的定位其实很直接：围绕体育赛事、运动文化、爱好者交流展开。没有复杂的包装，就是想让访问者一下子抓住重点。如果你喜欢看比赛讨论、找赛程、翻看体育类内容，这里提供了一个集中入口。下面从三个侧面帮你快速拼出全貌。</p>
+    </div>
+
+    <!-- 三段自然介绍 差异化内容 -->
+    <div class="features-grid">
+        <div class="feature-card">
+            <div class="icon-placeholder">🏟️</div>
+            <h3>赛事动态</h3>
+            <p>比赛日历、热门联赛、即时战报——信息流保持更新，适合日常刷一刷最新比分和话题。没有冗余的干扰，重点放在体育本身。</p>
+        </div>
+        <div class="feature-card">
+            <div class="icon-placeholder">🧭</div>
+            <h3>内容聚合</h3>
+            <p>图文、短视频、专题回顾……不同形态的体育内容按主题归类。你不需要在多个平台间跳转，一个站点就能浏览多样视角。</p>
+        </div>
+        <div class="feature-card">
+            <div class="icon-placeholder">🤝</div>
+            <h3>社群氛围</h3>
+            <p>评论区、话题板、兴趣小组——真实用户围绕体育产生讨论。氛围偏向理性交流，适合寻找同好或发表观点。</p>
+        </div>
+    </div>
+
+    <!-- FAQ 摘要风格 — 杂志常用手法 -->
+    <div class="faq-mini">
+        <h4>❓ 可能关心的小问题</h4>
+        <p><span class="small-q">Q：</span> 网站主要覆盖哪些运动？<br>从足球、篮球等主流项目，到网球、电竞等逐渐升温的领域，都有涉及。具体分类可以在站内导航看到。</p>
+        <p><span class="small-q">Q：</span> 内容时效性怎么样？<br>动态区保持日更，大型赛事期间会有专题跟进。资讯流以快速、简洁为特点。</p>
+        <p><span class="small-q">Q：</span> 需要注册才能看吗？<br>大部分浏览无需登录。部分互动功能（评论、收藏）可能需简单注册。</p>
+    </div>
+
+    <!-- 页尾访问提示 — 自然嵌入链接，句子形式 -->
+    <div class="visit-note">
+        <p>📬 如果你想进一步了解或直接使用，可以前往 <a href="https://ssl-main-oubo.com">欧博体育</a> 浏览完整内容。页面设计清爽，信息层级清晰，适合体育爱好者日常逛一逛。</p>
+        <span class="link-sentence">← 直达站点</span>
+    </div>
+
+    <!-- 轻量分隔 -->
+    <hr>
+
+    <div class="footer-meta">
+        杂志专题 · 介绍页 · 内容持续更新
+    </div>
+</div>
+</body>
+</html>

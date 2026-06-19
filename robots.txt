@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://ekosrughak.github.io/ssl-main-oubo-com/sitemap.xml
